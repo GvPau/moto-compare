@@ -11,10 +11,12 @@
   "author": "Pau Garcia Valero <pau.garcia.valero@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "^6.3.1",
     "@trpc/server": "^10.45.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "morgan": "^1.10.0",
+    "prisma": "^6.3.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "zod": "^3.24.1"
@@ -23,6 +25,11 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.1",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }

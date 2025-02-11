@@ -1,14 +1,20 @@
 import { trpc } from "../utils/trpc";
 
-interface FilterParams {
-  brand?: string;
-  year?: string;
+export interface FilterParams {
+  brand: string;
+  model: string;
+  year: string;
+  engineSize?: number;
+  weight?: number;
+  type: string;
+  horsePower?: number;
+  price?: number;
 }
 
 export const useFetchMotorcycles = () => {
   return trpc.motorcycles.getAll.useQuery();
 };
 
-export const useSearchMotorcycles = ({ brand, year }: FilterParams) => {
-  return trpc.motorcycles.search.useQuery({ brand, year });
+export const useSearchMotorcycles = ({ brand, year, model, engineSize, horsePower, weight, type, price }: FilterParams) => {
+  return trpc.motorcycles.search.useQuery({ brand, year, model, engineSize, horsePower, weight, type, price });
 };
