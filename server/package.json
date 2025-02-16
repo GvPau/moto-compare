@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev src/index.ts --watch ",
-    "scrape": "ts-node scripts/scrape-motorcycles.ts"
+    "scrape": "ts-node scripts/scrape-motorcycles.ts",
+    "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=./prisma/schema.prisma",
+    "prisma:studio": "prisma studio --schema=./prisma/schema.prisma",
+    "prisma:seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "Pau Garcia Valero <pau.garcia.valero@gmail.com>",

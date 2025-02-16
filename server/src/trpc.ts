@@ -11,8 +11,10 @@ const t = initTRPC.create();
 export const router = t.router;
 export const publicProcedure = t.procedure;
 
-import { motorcyclesRouter } from "./routers/motorcycles.router";
+import { motorcyclesRouter } from "./routers/motorcycles/motorcycles.router";
+import { productsRouter } from "./routers/products/products.router";
 
 export const appRouter = router({
   motorcycles: motorcyclesRouter,
+  products: productsRouter,
 });

@@ -3,8 +3,8 @@ import cors from "cors";
 import morgan from "morgan";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import { appRouter } from "./trpc";
-import scraperRoutes from "./routes/scraper.routes";
-import { adminAuth } from "./middleware/auth.middleware";
+import scraperRoutes from "./routers/scraper/scraper.routes";
+// import { adminAuth } from "./middleware/auth.middleware";
 
 const app = express();
 

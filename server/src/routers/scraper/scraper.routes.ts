@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ScraperService } from "../services/scraper.service";
+import { ScraperService } from "../../services/scraper.service";
 
 const router = Router();
 const scraperService = new ScraperService();

@@ -1,31 +1,34 @@
 import { PrismaClient } from "@prisma/client";
-import { motorcycles } from "../src/mocks/motorcycles";
+import { seedMotorcycles } from "./motorcycles.seed";
+import { seedHelmets } from "./helmets.seed";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log(`Start seeding ...`);
+  console.log("🌱 Starting database seeding...");
 
-  // Clear existing data
-  await prisma.motorcycle.deleteMany();
+  try {
+    // Clear existing data (optional)
+    await prisma.motorcycle.deleteMany();
+    await prisma.helmet.deleteMany();
 
-  // Insert new data
-  for (const motorcycle of motorcycles) {
-    const result = await prisma.motorcycle.create({
-      data: motorcycle,
-    });
-    console.log(`Created motorcycle with id: ${result.id}`);
+    // Run seeds
+    console.log("🏍️  Seeding motorcycles...");
+    await seedMotorcycles(prisma);
+
+    console.log("🪖 Seeding helmets...");
+    await seedHelmets(prisma);
+
+    console.log("✅ Seeding completed successfully!");
+  } catch (error) {
+    console.error("❌ Error during seeding:", error);
+    throw error;
+  } finally {
+    await prisma.$disconnect();
   }
-
-  console.log(`Seeding finished.`);
 }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

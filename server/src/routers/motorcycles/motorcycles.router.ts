@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { router, publicProcedure } from "../trpc";
-import { prisma } from "../utils/prisma"; // We'll create this file next
+import { router, publicProcedure } from "../../trpc";
+import { prisma } from "../../utils/prisma";
 
 export const motorcyclesRouter = router({
   getAll: publicProcedure.query(async () => {

@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -24,4 +18,62 @@ model Motorcycle {
   weight     Int
   type       String
   image      String
+}
+
+model Product {
+  id          Int             @id @default(autoincrement())
+  name        String
+  brand       String
+  price       Float
+  description String
+  images      String[]
+  category    ProductCategory
+  inStock     Boolean         @default(true)
+  rating      Float?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  details     Json
+}
+
+model Helmet {
+  id            Int         @id @default(autoincrement())
+  name          String
+  brand         String
+  price         Float
+  description   String
+  images        String[]
+  inStock       Boolean     @default(true)
+  rating        Float?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  size          HelmetSize
+  style         HelmetStyle
+  certification String[]
+  weight        Float
+}
+
+enum ProductCategory {
+  HELMET
+  GLOVES
+  BOOTS
+  JACKETS
+  PANTS
+  PROTECTIONS
+  ACCESSORIES
+}
+
+enum HelmetSize {
+  XS
+  S
+  M
+  L
+  XL
+  XXL
+}
+
+enum HelmetStyle {
+  FULL_FACE
+  MODULAR
+  OPEN_FACE
+  OFF_ROAD
 }
