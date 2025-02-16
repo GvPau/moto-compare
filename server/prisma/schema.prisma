@@ -8,16 +8,18 @@ datasource db {
 }
 
 model Motorcycle {
-  id         Int    @id @default(autoincrement())
+  id         Int            @id @default(autoincrement())
   brand      String
   model      String
   year       Int
-  price      Int
+  price      Float
   horsePower Int
   engineSize Int
   weight     Int
-  type       String
+  type       MotorcycleType
   image      String
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
 }
 
 model Product {
@@ -44,12 +46,12 @@ model Helmet {
   images        String[]
   inStock       Boolean     @default(true)
   rating        Float?
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
   size          HelmetSize
   style         HelmetStyle
   certification String[]
   weight        Float
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
 
 enum ProductCategory {
@@ -75,5 +77,15 @@ enum HelmetStyle {
   FULL_FACE
   MODULAR
   OPEN_FACE
+  OFF_ROAD
+}
+
+enum MotorcycleType {
+  SPORT
+  NAKED
+  ADVENTURE
+  CRUISER
+  TOURING
+  SCOOTER
   OFF_ROAD
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchMotorcycles, FilterParams } from '../hooks/useMotorcycles';
-import { Motorcycle } from '../types/Motorcycle';
+import { MotorcycleDisplay } from '@entities/Motorcycle';
 import {
     Container,
     TextField,
@@ -21,13 +21,13 @@ import {
 } from '@mui/material';
 
 const SearchPage: React.FC = () => {
-    const [motorcycles, setMotorcycles] = useState<Motorcycle[]>([]);
+    const [motorcycles, setMotorcycles] = useState<MotorcycleDisplay[]>([]);
     const [brand, setBrand] = useState('');
     const [model, setModel] = useState('');
     const [year, setYear] = useState('');
     const [engineSize, setEngineSize] = useState<number | undefined>(undefined);
     const [weight, setWeight] = useState<number | undefined>(undefined);
-    const [type, setType] = useState('');
+    const [type, setType] = useState<string>('');
     const [horsePower, setHorsePower] = useState<number | undefined>(undefined);
     const [price, setPrice] = useState<number | undefined>(undefined);
     const [filters, setFilters] = useState<FilterParams>({
@@ -44,7 +44,7 @@ const SearchPage: React.FC = () => {
 
     useEffect(() => {
         if (data) {
-            setMotorcycles(data);
+            setMotorcycles(data as MotorcycleDisplay[]);
         }
     }, [data]);
 
@@ -178,13 +178,13 @@ const SearchPage: React.FC = () => {
                     )}
                     {motorcycles.length > 0 && (
                         <Grid container spacing={2} sx={{ marginTop: '20px' }}>
-                            {motorcycles.map((motorcycle) => (
+                            {motorcycles.map((motorcycle: MotorcycleDisplay) => (
                                 <Grid item xs={12} sm={6} md={4} key={motorcycle.id}>
                                     <Card>
                                         <CardMedia
                                             component="img"
                                             height="240"
-                                            image={motorcycle.image} // Replace with actual image path
+                                            image={motorcycle.image}
                                             alt={motorcycle.model}
                                         />
                                         <CardContent>

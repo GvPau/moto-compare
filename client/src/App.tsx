@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SearchPage from './pages/Search';
 import HomePage from './pages/Home';
+import Clothes from "./pages/Clothes";
 
 const queryClient = new QueryClient();
 const theme = createTheme({
@@ -38,8 +39,10 @@ const App: React.FC = () => {
       <QueryClientProvider client={queryClient}>
         <Router>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/search" element={<SearchPage />} />
+            <Route index element={<HomePage />} />
+            <Route path="search" element={<SearchPage />} />
+            <Route path="clothes" element={<Clothes />} />
+            <Route path="clothes/:category" element={<Clothes />} />
           </Routes>
         </Router>
       </QueryClientProvider>
