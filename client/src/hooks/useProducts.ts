@@ -1,5 +1,5 @@
 import { trpc } from "../utils/trpc";
 
-export function useProducts() {
+export function useFetchProducts() {
   return trpc.products.helmets.getAll.useQuery();
 }

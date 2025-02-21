@@ -1,4 +1,3 @@
-import { trpc } from "../utils/trpc";
 import { Link, useLocation } from "react-router-dom";
 import { ProductCard } from '../components/ProductCard';
 import {
@@ -11,12 +10,10 @@ import {
     Select,
     MenuItem,
     Grid,
-    Card,
-    CardMedia,
-    CardContent,
     Tab,
 } from "@mui/material";
 import TuneIcon from '@mui/icons-material/Tune';
+import { useFetchProducts } from "src/hooks/useProducts";
 
 const categories = [
     { id: "", label: "All" },
@@ -31,7 +28,7 @@ const categories = [
 
 export default function Clothes() {
     const location = useLocation();
-    const { data: helmets } = trpc.products.helmets.getAll.useQuery();
+    const { data: helmets } = useFetchProducts()
     const currentCategory = location.pathname.split('/').pop() || 'all';
 
     return (
