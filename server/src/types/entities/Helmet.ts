@@ -30,7 +30,6 @@ export interface Helmet {
   createdAt: Date;
   updatedAt: Date;
 }
-
 export interface HelmetDisplay extends Omit<Helmet, "createdAt" | "updatedAt"> {
   formattedPrice?: string;
   isNew?: boolean;

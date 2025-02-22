@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
 import { trpc } from './utils/trpc';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import './App.css'
-import { Button } from "@/components/ui/button"
+import './App.css';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import { ThemeProvider } from './components/theme-provider';
+
 const queryClient = new QueryClient();
-
 
 const App: React.FC = () => {
   const [trpcClient] = useState(() =>
@@ -23,12 +26,20 @@ const App: React.FC = () => {
   );
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>
-        <Button>Click me</Button>
-      </QueryClientProvider>
-    </trpc.Provider>
-  );
-}
+    <ThemeProvider>
+      <trpc.Provider client={trpcClient} queryClient={queryClient}>
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} /> {/* Home Page Route */}
+              <Route path="/login" element={<Login />} /> {/* Home Page Route */}
+            </Routes>
+          </Router>
+        </QueryClientProvider>
+      </trpc.Provider>
+    </ThemeProvider>
 
-export default App
+  );
+};
+
+export default App;
