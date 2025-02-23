@@ -18,6 +18,7 @@ import { sidebarItems } from "@/components/app-sidebar-items";
 import { useActivePageStore } from "@/store/useActivePageStore";
 import Profile from "@/pages/Profile";
 import Address from "./Address";
+import Products from "./Products";
 
 export default function Dashboard() {
     const activePage = useActivePageStore((state) => state.activePage);
@@ -71,11 +72,12 @@ export default function Dashboard() {
                 </header>
 
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-                    {/* Conditionally render the profile page or other content based on activePage */}
                     {activePage?.title === "Profile" ? (
                         <Profile />
                     ) : activePage?.title === "Addresses" ? (
                         <Address />
+                    ) : ["Helmets", "Jackets", "Gloves"].includes(activePage?.title || "") ? (
+                        <Products />
                     ) : (
                         <>
                             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
@@ -85,10 +87,7 @@ export default function Dashboard() {
                             </div>
                             < div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
                         </>
-
-                    )
-                    }
-
+                    )}
                 </div>
             </SidebarInset>
         </SidebarProvider>

@@ -37,6 +37,7 @@ export default function Profile() {
                                 <Label htmlFor="name" className="text-left mb-3">Name</Label>
                                 <Input
                                     id="name"
+                                    placeholder="Name"
                                     value={newName}
                                     onChange={(e) => setNewName(e.target.value)}
                                     className="mt-2"
@@ -51,6 +52,7 @@ export default function Profile() {
                                 <Label htmlFor="email" className="text-left mb-3">Email</Label>
                                 <Input
                                     id="email"
+                                    placeholder="Email"
                                     value={newEmail}
                                     onChange={(e) => setNewEmail(e.target.value)}
                                     className="mt-2"

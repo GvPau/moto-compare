@@ -39,6 +39,7 @@ export default function Address() {
                                     <Label htmlFor="street" className="text-left mb-2">Street</Label>
                                     <Input
                                         id="street"
+                                        placeholder="Street"
                                         value={street}
                                         onChange={(e) => setStreet(e.target.value)}
                                         className="mt-2"
@@ -48,6 +49,7 @@ export default function Address() {
                                     <Label htmlFor="city" className="text-left mb-2">City</Label>
                                     <Input
                                         id="city"
+                                        placeholder="City"
                                         value={city}
                                         onChange={(e) => setCity(e.target.value)}
                                         className="mt-2"
@@ -60,6 +62,7 @@ export default function Address() {
                                     <Label htmlFor="state" className="text-left mb-2">State</Label>
                                     <Input
                                         id="state"
+                                        placeholder="State"
                                         value={state}
                                         onChange={(e) => setState(e.target.value)}
                                         className="mt-2"
@@ -69,6 +72,7 @@ export default function Address() {
                                     <Label htmlFor="zip" className="text-left mb-2">ZIP</Label>
                                     <Input
                                         id="zip"
+                                        placeholder="Zip"
                                         value={zip}
                                         onChange={(e) => setZip(e.target.value)}
                                         className="mt-2"
@@ -78,6 +82,7 @@ export default function Address() {
                                     <Label htmlFor="country" className="text-left mb-2">Country</Label>
                                     <Input
                                         id="country"
+                                        placeholder="Country"
                                         value={country}
                                         onChange={(e) => setCountry(e.target.value)}
                                         className="mt-2"
