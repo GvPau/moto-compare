@@ -60,6 +60,7 @@ export default function Profile() {
                                     Enter your email address. We will use this for notifications.
                                 </p>
                             </div>
+                            {/* Email Field with increased space */}
                         </div>
                         <Separator className="my-6" />
 

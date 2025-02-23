@@ -1,5 +1,6 @@
 import React from "react";
 import { AppSidebar } from "@/components/app-sidebar";
+import { Separator } from "@/components/ui/separator";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -7,15 +8,16 @@ import {
     BreadcrumbList,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
 import {
     SidebarInset,
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { sidebarItems } from "@/components/app-sidebar-items"; // Import the sidebar items
-import { useActivePageStore } from "@/store/useActivePageStore"; // Zustand store
-import Profile from "@/pages/Profile"; // Import the Profile page component
+
+import { sidebarItems } from "@/components/app-sidebar-items";
+import { useActivePageStore } from "@/store/useActivePageStore";
+import Profile from "@/pages/Profile";
+import Address from "./Address";
 
 export default function Dashboard() {
     const activePage = useActivePageStore((state) => state.activePage);
@@ -72,6 +74,8 @@ export default function Dashboard() {
                     {/* Conditionally render the profile page or other content based on activePage */}
                     {activePage?.title === "Profile" ? (
                         <Profile />
+                    ) : activePage?.title === "Addresses" ? (
+                        <Address />
                     ) : (
                         <>
                             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
