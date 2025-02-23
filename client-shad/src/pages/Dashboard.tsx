@@ -19,9 +19,11 @@ import { useActivePageStore } from "@/store/useActivePageStore";
 import Profile from "@/pages/Profile";
 import Address from "./Address";
 import Products from "./Products";
+import PaymentMethod from "./PaymentMethod";
 
 export default function Dashboard() {
     const activePage = useActivePageStore((state) => state.activePage);
+    console.log(activePage);
     const setActivePage = useActivePageStore((state) => state.setActivePage);
 
     const handleItemClick = (item: { title: string; url: string }) => {
@@ -78,6 +80,8 @@ export default function Dashboard() {
                         <Address />
                     ) : ["Helmets", "Jackets", "Gloves"].includes(activePage?.title || "") ? (
                         <Products />
+                    ) : activePage?.title === "Payment Methods" ? (
+                        <PaymentMethod />
                     ) : (
                         <>
                             <div className="grid auto-rows-min gap-4 md:grid-cols-3">
