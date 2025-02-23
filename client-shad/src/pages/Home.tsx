@@ -31,7 +31,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { useFetchProducts } from "@/hooks/useProducts";
+import { useFetchProducts } from "@/hooks/use-products";
 import { HelmetDisplay, HelmetSize, HelmetStyle } from "../../../server/src/types/entities/Helmet";
 import { ModeToggle } from "@/components/mode-toggle";
 

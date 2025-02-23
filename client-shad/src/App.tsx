@@ -5,9 +5,11 @@ import { trpc } from './utils/trpc';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css';
+import { ThemeProvider } from './components/theme-provider';
+
 import Home from './pages/Home';
 import Login from './pages/Login';
-import { ThemeProvider } from './components/theme-provider';
+import Dashboard from './pages/Dashboard';
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,7 @@ const App: React.FC = () => {
           <Router>
             <Routes>
               <Route path="/" element={<Home />} /> {/* Home Page Route */}
+              <Route path="/dashboard" element={<Dashboard />} /> {/* Home Page Route */}
               <Route path="/login" element={<Login />} /> {/* Home Page Route */}
             </Routes>
           </Router>
